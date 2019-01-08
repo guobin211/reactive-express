@@ -1,10 +1,14 @@
 ## Reactive-Express
 
-使用typescript编写nodejs后端服务，自动生成api文档和测试，项目结构清晰，运行可靠。
+#### note: express + ts + + mongodb + pm2 + swagger
+
+使用typescript编写nodejs后端服务，自动生成api文档和测试，项目结构清晰。
 
 [![Reactive-Express](https://github.com/guobin211/reactive-express/blob/master/images/github.jpg)](https://github.com/guobin211/reactive-express)
 
-### note: express + ts + + mongodb + pm2 + swagger
+### 部署
+
+**将dist目录上传到服务器**
 
 **使用前确保mongodb数据库在运行状态**
 
