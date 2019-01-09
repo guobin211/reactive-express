@@ -1,15 +1,17 @@
 <div align="center">
     <h1 align="center">Reactive-Express</h1>
+    <span>express</span>
+    <span>typescript</span>
+    <span>mongodb</span>
+    <span>mysql</span>
+    <span>typeorm</span>
+    <span>mongoose</span>
+    <span>swagger</span>
+    <p>使用typescript编写nodejs后端服务。</p>
 </div>
-
-### express + ts + + mongodb + pm2 + swagger + type-orm + mysql
-
-**使用typescript编写nodejs后端服务。**
 
 [![Reactive-Express](https://github.com/guobin211/reactive-express/blob/master/images/github.jpg)](https://github.com/guobin211/reactive-express)
 
-**API文档和测试。**
-[![Swagger-Api](https://github.com/guobin211/reactive-express/blob/master/images/swagger.png)](https://github.com/guobin211/reactive-express)
 
 ### 部署简单
 
@@ -80,3 +82,5 @@ pm2 start               //  pm2 start
     // api文档
     http://localhost:3000/dist/index.html
 
+**API文档和测试。**
+[![Swagger-Api](https://github.com/guobin211/reactive-express/blob/master/images/swagger.png)](https://github.com/guobin211/reactive-express)
