@@ -1,24 +1,31 @@
-import bodyParser from 'body-parser';
-import compression from 'compression';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import express, { NextFunction } from 'express';
-import helmet from 'helmet';
-import mongoose from 'mongoose';
-import logger from 'morgan';
-import path from 'path';
+import 'reflect-metadata';
+import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
+import * as cookieParser from 'cookie-parser';
+import * as cors from 'cors';
+import * as express from 'express';
+import { NextFunction } from 'express';
+import * as helmet from 'helmet';
+import * as mongoose from 'mongoose';
+import * as logger from 'morgan';
+import * as path from 'path';
+
+import { createConnection } from 'typeorm';
 
 /**
  *  import router class
  */
-import { UserRouter } from './routes/user.router';
-
+import { UserRouter } from './routes/user-router';
 
 /**
  * build routers
  */
 const userRoutes = new UserRouter();
 
+/**
+ * type orm controller
+ */
+import { getAllPhotos, photoGetById, postSavePhoto } from './controller/photo-controller';
 
 /**
  * express server
@@ -38,8 +45,26 @@ class Server {
      */
     private initConfig(): void {
         const MONGO_URL = 'mongodb://localhost/node-mongo';
-        mongoose.connect(MONGO_URL || process.env.MONGODB_URL, { useNewUrlParser: true });
-        this.app.use(bodyParser.urlencoded({ extended: true }));
+        mongoose.connect(MONGO_URL || process.env.MONGODB_URL, {useNewUrlParser: true}).then(data => {
+            // console.log(data)
+        }).catch(err => console.error(err));
+        createConnection({
+            type: 'mysql',
+            host: 'localhost',
+            port: 3306,
+            username: 'root',
+            password: 'admin888',
+            database: 'node_mysql',
+            entities: [
+                __dirname + '/entity/*.js'
+            ],
+            synchronize: true,
+        }).then(async connection => {
+            // init
+        }).catch(err => {
+            console.error('mysql链接失败' + err)
+        });
+        this.app.use(bodyParser.urlencoded({extended: true}));
         this.app.use(bodyParser.json());
         this.app.use(cookieParser());
         this.app.use(logger('dev'));
@@ -73,8 +98,17 @@ class Server {
      */
     private mountRouting(): void {
         const router: express.Router = express.Router();
+        // mongodb
         this.app.use('/', router);
         this.app.use('/user', userRoutes.router);
+        // type orm
+        this.app.get('/photo', getAllPhotos);
+        this.app.post('/photo', postSavePhoto);
+        this.app.get('/photo/:id', photoGetById);
+        // 404
+        this.app.get('*', function (req, res) {
+            res.redirect('http://localhost:3000/404.html');
+        })
     }
 
 }
