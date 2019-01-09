@@ -10,7 +10,7 @@
     <p>使用typescript编写nodejs后端服务。</p>
 </div>
 
-[![Node](https://img.shields.io/node/v/:node.svg)](https://github.com/guobin211/reactive-express)
+[![Node](https://img.shields.io/node/v/:reactive-express.svg)](https://github.com/guobin211/reactive-express)
 
 
 [![Reactive-Express](https://github.com/guobin211/reactive-express/blob/master/images/github.jpg)](https://github.com/guobin211/reactive-express)
