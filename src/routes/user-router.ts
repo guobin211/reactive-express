@@ -1,12 +1,12 @@
-/**
- *  user.router.ts
- *  @author GuoBin201314@gmail.com
- *  @date 2018-12-17 20:59
- */
-
 import { Request, Response, Router } from 'express';
 import { Users } from '../models/User';
 
+/**
+ *  user-router.ts
+ *  @author GuoBin201314@gmail.com
+ *  @date 2018-12-17 20:59
+ *  @version 1.0.0
+ */
 export class UserRouter {
 
     public router: Router;
@@ -23,9 +23,9 @@ export class UserRouter {
      */
     public getAllUsers(req: Request, res: Response): void {
         Users.find().then(data => {
-            return res.status(200).json({ code: 200, body: data });
+            return res.status(200).json({code: 200, body: data});
         }).catch(error => {
-            res.status(500).json({ error });
+            res.status(500).json({error});
             return error;
         });
     }
@@ -36,14 +36,14 @@ export class UserRouter {
      * @param res
      */
     public one(req: Request, res: Response): void {
-        const { username } = req.params;
+        const {username} = req.params;
 
-        Users.findOne({ username })
+        Users.findOne({username})
             .then((data) => {
-                res.status(200).json({ data });
+                res.status(200).json({data});
             })
             .catch((error) => {
-                res.status(500).json({ error });
+                res.status(500).json({error});
             });
     }
 
@@ -59,7 +59,7 @@ export class UserRouter {
      * @param res
      */
     public create(req: Request, res: Response): void {
-        const { firstName, lastName, username, email, password } = req.body;
+        const {firstName, lastName, username, email, password} = req.body;
 
         const user = new Users({
             firstName,
@@ -72,10 +72,10 @@ export class UserRouter {
         user
             .save()
             .then((data) => {
-                res.status(201).json({ data });
+                res.status(201).json({data});
             })
             .catch((error) => {
-                res.status(500).json({ error });
+                res.status(500).json({error});
             });
     }
 
@@ -85,14 +85,14 @@ export class UserRouter {
      * @param res
      */
     public update(req: Request, res: Response): void {
-        const { username } = req.params;
+        const {username} = req.params;
 
-        Users.findOneAndUpdate({ username }, req.body)
+        Users.findOneAndUpdate({username}, req.body)
             .then((data) => {
-                res.status(200).json({ data });
+                res.status(200).json({data});
             })
             .catch((error) => {
-                res.status(500).json({ error });
+                res.status(500).json({error});
             });
     }
 
@@ -102,14 +102,14 @@ export class UserRouter {
      * @param res
      */
     public delete(req: Request, res: Response): void {
-        const { username } = req.params;
+        const {username} = req.params;
 
-        Users.findOneAndDelete({ username })
+        Users.findOneAndDelete({username})
             .then(() => {
                 res.status(204).end();
             })
             .catch((error) => {
-                res.status(500).json({ error });
+                res.status(500).json({error});
             });
     }
 
