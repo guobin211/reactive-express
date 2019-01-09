@@ -1,17 +1,15 @@
 <div align="center">
     <h1 align="center">Reactive-Express</h1>
-    <span>express</span>
-    <span>typescript</span>
-    <span>mongodb</span>
-    <span>mysql</span>
-    <span>typeorm</span>
-    <span>mongoose</span>
-    <span>swagger</span>
-    <p>使用typescript编写nodejs后端服务。</p>
+    <h3>使用typescript编写nodejs后端服务。</h3>
 </div>
 
-[![Node](https://img.shields.io/node/v/:math-ts.svg)](https://github.com/guobin211/reactive-express)
-
+<span>node ^8.14.0</span>
+<span>express 4.16.4</span>
+<span>typescript 3.2.2</span>
+<span>mongodb 4.0.1</span>
+<span>mysql ^5.1.6</span>
+<span>typeorm ^0.2.11</span>
+<span>mongoose 5.3.16</span>
 
 [![Reactive-Express](https://github.com/guobin211/reactive-express/blob/master/images/github.jpg)](https://github.com/guobin211/reactive-express)
 
