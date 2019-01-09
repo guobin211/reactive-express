@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is a sample server Petstore server",
+    "description": "This is a sample server api doc",
     "version": "1.0.0",
     "title": "Swagger Rest Api"
   },

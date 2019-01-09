@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node dist/app",
     "start:watch": "npx nodemon dist/app",
-    "build": "npx tsc",
+    "build": "npx tsc && npm run copy-static",
     "build:watch": "npx tsc -w",
     "copy-static": "ts-node copyStatic.ts"
   },
@@ -20,8 +20,11 @@
     "helmet": "3.15.0",
     "mongoose": "5.3.16",
     "morgan": "1.9.1",
+    "mysql": "^2.16.0",
+    "reflect-metadata": "^0.1.12",
+    "shelljs": "latest",
     "swagger-express-middleware": "^2.0.0",
-    "shelljs": "latest"
+    "typeorm": "^0.2.11"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.2",

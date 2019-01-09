@@ -1,28 +1,36 @@
-## Reactive-Express
+<div align="center">
+    <h1 align="center">Reactive-Express</h1>
+</div>
 
-#### note: express + ts + + mongodb + pm2 + swagger
+### express + ts + + mongodb + pm2 + swagger + type-orm + mysql
 
-使用typescript编写nodejs后端服务，自动生成api文档和测试，项目结构清晰。
+**使用typescript编写nodejs后端服务。**
 
 [![Reactive-Express](https://github.com/guobin211/reactive-express/blob/master/images/github.jpg)](https://github.com/guobin211/reactive-express)
 
-### 部署
+**API文档和测试。**
+[![Swagger-Api](https://github.com/guobin211/reactive-express/blob/master/images/swagger.png)](https://github.com/guobin211/reactive-express)
 
-**将dist目录上传到服务器**
+### 部署简单
+
+**将dist目录上传到服务器，用pm2启动项目**
 
 **使用前确保mongodb数据库在运行状态**
+**使用前确保mysql数据库在运行状态**
 
 ```sh
 
-npm run start   // dev server
+npm run build           //  build server
 
-npm run serve   // local test server
+npm run start:watch     //  nodemon start
 
-pm2 start       //  pm2 server
+pm2 start               //  pm2 start
 
 ```
 
-### 开发说明
+### 开发模式
+
+**主要文件**
 
     server.ts
         initConfig()        用于挂载中间件
@@ -31,20 +39,39 @@ pm2 start       //  pm2 server
         **.router.ts        路由和业务控制器
     models
         **.ts               数据模型配置
+    
+    controller              type-orm 控制器
+    entity                  type-orm 模型定义   
+
+**启动命令**   
+
+```
+   // ts编译 
+   npm run build:watch
+   // node启动
+   npm run start:watch
+
+```
 
 ### 目录说明
-    
-    models          模型
-    public          公共资源
-        v1              api
-        dist            swagger
-    routes          路由
-    app             app启动
-    server          server入口
-    
+    src
+        controller      type-orm    controller
+        entity          type-orm    models
+        models          mongoose    models
+        public          公共资源
+            v1              api文档
+            dist            swagger
+            css
+            js
+            fonts
+            images
+        routes          mongoose路由
+        app             node.js app <使用debug>
+        server          express server
+        
     ecosystem.config.js     pm2配置文件
-    mongodb.sh              mongodb
-    nginx.conf              nginx
+    mongodb.sh              mongodb 测试
+    nginx.conf              nginx   测试
 
 ### 运行地址
     
