@@ -44,6 +44,7 @@ class Server {
      * express app mid config
      */
     private initConfig(): void {
+
         const MONGO_URL = 'mongodb://localhost/node-mongo';
         mongoose.connect(MONGO_URL || process.env.MONGODB_URL, {useNewUrlParser: true}).then(data => {
             // console.log(data)
@@ -64,6 +65,7 @@ class Server {
         }).catch(err => {
             console.error('mysql链接失败' + err)
         });
+
         this.app.use(bodyParser.urlencoded({extended: true}));
         this.app.use(bodyParser.json());
         this.app.use(cookieParser());
