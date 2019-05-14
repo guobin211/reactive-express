@@ -2,6 +2,7 @@ import * as debug from 'debug';
 import * as http from 'http';
 
 import Server from './server';
+import { Socket } from 'socket.io';
 
 debug('ts-express:server');
 
@@ -11,10 +12,23 @@ console.log(`Server listening on port http://localhost:${port}`);
 
 
 const server = http.createServer(Server);
+
+const io = require('socket.io')(server);
+
+io.on('connection', (s: Socket) => {
+    console.log(s);
+});
+io.on('connect', (s: Socket) => {
+    console.log(s);
+});
+io.on('close', (s: Socket) => {
+    console.log(s);
+});
+
+
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
 
 function normalizePort(val: number | string): number | string | boolean {
     const port: number = typeof val === 'string' ? parseInt(val, 10) : val;

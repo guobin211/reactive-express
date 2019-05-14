@@ -10,6 +10,7 @@
     "copy-static": "ts-node copyStatic.ts"
   },
   "dependencies": {
+    "@types/socket.io": "^2.1.2",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.3",
     "compression": "1.7.3",
@@ -23,6 +24,7 @@
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.12",
     "shelljs": "latest",
+    "socket.io": "^2.2.0",
     "swagger-express-middleware": "^2.0.0",
     "typeorm": "^0.2.11"
   },

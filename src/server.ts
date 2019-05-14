@@ -45,7 +45,7 @@ class Server {
      */
     private initConfig(): void {
 
-        const MONGO_URL = 'mongodb://localhost/node-mongo';
+        const MONGO_URL = 'mongodb://localhost/node_mongo';
         mongoose.connect(MONGO_URL || process.env.MONGODB_URL, {useNewUrlParser: true}).then(data => {
             // console.log(data)
         }).catch(err => console.error(err));
@@ -55,7 +55,7 @@ class Server {
             port: 3306,
             username: 'root',
             password: 'admin888',
-            database: 'node_mysql',
+            database: 'node_mysql8',
             entities: [
                 __dirname + '/entity/*.js'
             ],
