@@ -1,6 +1,9 @@
 import { Socket } from 'socket.io';
 import { io } from '../app';
 
+/**
+ * dev socket.io
+ */
 class SocketService {
 
   private io: Socket;
