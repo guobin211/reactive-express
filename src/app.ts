@@ -3,6 +3,7 @@ import * as http from 'http';
 
 import Server from './server';
 import { Socket } from 'socket.io';
+import { socketService } from './socket/socketService';
 
 debug('ts-express:server');
 
@@ -13,16 +14,16 @@ console.log(`Server listening on port http://localhost:${port}`);
 
 const server = http.createServer(Server);
 
-const io = require('socket.io')(server);
+export const io = require('socket.io')(server);
 
 io.on('connection', (s: Socket) => {
-    console.log(s);
+    socketService.connection(s);
 });
 io.on('connect', (s: Socket) => {
-    console.log(s);
+    socketService.connection(s);
 });
-io.on('close', (s: Socket) => {
-    console.log(s);
+io.on('message', (s: Socket) => {
+    socketService.message(s);
 });
 
 
