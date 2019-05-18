@@ -72,7 +72,7 @@ export class UserRouter {
         user
             .save()
             .then((data) => {
-                res.status(201).json({data});
+                res.status(200).json({data});
             })
             .catch((error) => {
                 res.status(500).json({error});
@@ -102,9 +102,9 @@ export class UserRouter {
      * @param res
      */
     public delete(req: Request, res: Response): void {
-        const {username} = req.params;
-
-        Users.findOneAndDelete({username})
+        const id = req.params.username;
+        console.log(id);
+        Users.findOneAndDelete({_id: id})
             .then(() => {
                 res.status(204).end();
             })
