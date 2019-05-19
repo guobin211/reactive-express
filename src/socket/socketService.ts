@@ -15,16 +15,11 @@ class SocketService {
     this.cliects = new Map();
   }
 
-  public send(s: string) {
-    this.io.send('message', s);
-  }
-
   public connection(s: Socket) {
-
   }
 
   public connect(s: Socket) {
-
+    console.log( 'connect' );
   }
 
   public message(s: Socket) {

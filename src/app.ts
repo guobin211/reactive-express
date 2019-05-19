@@ -14,7 +14,8 @@ console.log(`Server listening on port http://localhost:${port}`);
 
 const server = http.createServer(Server);
 
-export const io = require('socket.io')(server);
+const server2 = http.createServer();
+export const io = require('socket.io')(server2);
 
 io.on('connection', (s: Socket) => {
   socketService.connection(s);
@@ -26,6 +27,7 @@ io.on('message', (s: Socket) => {
   socketService.message(s);
 });
 
+server2.listen(12310);
 
 server.listen(port);
 server.on('error', onError);
