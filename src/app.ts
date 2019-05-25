@@ -1,35 +1,15 @@
 import * as debug from 'debug';
 import * as http from 'http';
-
 import Server from './server';
-import { Socket } from 'socket.io';
-import { socketService } from './socket/socketService';
-
-debug('ts-express:server');
 
 const port = normalizePort(process.env.PORT || 3000);
 Server.set('port', port);
-console.log(`Server listening on port http://localhost:${port}`);
 
+debug('ts-express:server');
 
 const server = http.createServer(Server);
-
-const server2 = http.createServer();
-export const io = require('socket.io')(server2);
-
-io.on('connection', (s: Socket) => {
-  socketService.connection(s);
-});
-io.on('connect', (s: Socket) => {
-  socketService.connection(s);
-});
-io.on('message', (s: Socket) => {
-  socketService.message(s);
-});
-
-server2.listen(12310);
-
 server.listen(port);
+console.log(`Server listening on port http://localhost:${port}`);
 server.on('error', onError);
 server.on('listening', onListening);
 

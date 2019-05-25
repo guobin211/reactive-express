@@ -10,6 +10,7 @@
     "copy-static": "ts-node copyStatic.ts"
   },
   "dependencies": {
+    "@types/ws": "^6.0.1",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.3",
     "compression": "1.7.3",
@@ -25,8 +26,8 @@
     "reflect-metadata": "^0.1.12",
     "shelljs": "latest",
     "socket.io": "^2.2.0",
-    "swagger-express-middleware": "^2.0.0",
-    "typeorm": "^0.2.11"
+    "typeorm": "^0.2.11",
+    "ws": "^7.0.0"
   },
   "devDependencies": {
     "@types/socket.io": "^2.1.2",
@@ -42,7 +43,6 @@
     "@types/morgan": "1.7.35",
     "@types/node": "8.5.5",
     "@types/shelljs": "^0.8.1",
-    "@types/swagger-express-middleware": "^1.0.9",
     "nodemon": "1.18.8",
     "ts-node": "^5.0.1",
     "tslint": "5.11.0",

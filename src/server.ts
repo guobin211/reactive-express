@@ -9,7 +9,6 @@ import * as helmet from 'helmet';
 import * as mongoose from 'mongoose';
 import * as logger from 'morgan';
 import * as path from 'path';
-
 import { createConnection } from 'typeorm';
 
 /**
@@ -47,9 +46,9 @@ class Server {
 
     const MONGO_URL = 'mongodb://localhost/node_mongo';
     mongoose.connect(MONGO_URL || process.env.MONGODB_URL, {useNewUrlParser: true})
-        .then(data => {
-          // console.log(data)
-        }).catch(err => console.error(err));
+        .then(mongo => {
+          logger('mongodb 连接成功')
+        }).catch(err =>  logger('mongodb 连接失败' + err));
     createConnection({
       type: 'mysql',
       host: 'localhost',
@@ -63,8 +62,9 @@ class Server {
       synchronize: true
     }).then(async connection => {
       // init
+      logger('mysql 链接成功');
     }).catch(err => {
-      console.error('mysql链接失败' + err);
+      logger('mysql 链接失败' + err );
     });
 
     this.app.use(bodyParser.urlencoded({extended: true}));

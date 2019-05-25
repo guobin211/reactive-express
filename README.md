@@ -73,6 +73,6 @@ pm2 start               //  pm2 start
     // server
     http://localhost:3000/
     // api文档
-    http://localhost:3000/dist/index.html
+    http://localhost:3000/swagger/index.html
 [![Swagger-Api](https://github.com/guobin211/reactive-express/blob/master/images/swagger.png)](https://github.com/guobin211/reactive-express)
 
