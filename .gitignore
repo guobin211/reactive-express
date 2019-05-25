@@ -84,5 +84,7 @@ typings/
 .idea/modules.xml
 .idea/workspace.xml
 dist/
+dist/*
+dist/**/*
 
 .idea/

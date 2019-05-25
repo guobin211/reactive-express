@@ -2,7 +2,7 @@
  * event
  * Author GuoBin201314@gmail.com on 15:33
  */
-let socket = {};
+var socket = {};
 window.onload = function () {
   init();
 };
