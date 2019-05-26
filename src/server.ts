@@ -10,7 +10,6 @@ import * as mongoose from 'mongoose';
 import * as logger from 'morgan';
 import * as path from 'path';
 import { createConnection } from 'typeorm';
-
 /**
  *  import router class
  */
@@ -20,7 +19,6 @@ import { UserRouter } from './routes/user-router';
  * build routers
  */
 const userRoutes = new UserRouter();
-
 /**
  * type orm controller
  */
@@ -30,7 +28,6 @@ import { getAllPhotos, photoGetById, postSavePhoto } from './controller/photo-co
  * express server
  */
 class Server {
-
   public app: express.Application;
 
   constructor() {
@@ -43,12 +40,11 @@ class Server {
    * express app mid config
    */
   private initConfig(): void {
-
     const MONGO_URL = 'mongodb://localhost/node_mongo';
     mongoose.connect(MONGO_URL || process.env.MONGODB_URL, {useNewUrlParser: true})
         .then(mongo => {
-          logger('mongodb 连接成功')
-        }).catch(err =>  logger('mongodb 连接失败' + err));
+          logger('mongodb 连接成功');
+        }).catch(err => logger('mongodb 连接失败' + err));
     createConnection({
       type: 'mysql',
       host: 'localhost',
@@ -64,9 +60,8 @@ class Server {
       // init
       logger('mysql 链接成功');
     }).catch(err => {
-      logger('mysql 链接失败' + err );
+      logger('mysql 链接失败' + err);
     });
-
     this.app.use(bodyParser.urlencoded({extended: true}));
     this.app.use(bodyParser.json());
     this.app.use(cookieParser());
@@ -114,7 +109,6 @@ class Server {
       res.redirect('http://localhost:3000/404.html');
     });
   }
-
 }
 
 export default new Server().app;
