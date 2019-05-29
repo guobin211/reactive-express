@@ -7,7 +7,8 @@
     "start:watch": "npx nodemon dist/app",
     "build": "npx tsc && npm run copy-static",
     "build:watch": "npx tsc -w",
-    "copy-static": "ts-node copyStatic.ts"
+    "copy-static": "ts-node copyStatic.ts",
+    "npm-args": "node test/npm.js --config=2333"
   },
   "dependencies": {
     "@types/ws": "^6.0.1",
