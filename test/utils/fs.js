@@ -1,31 +1,31 @@
 const fs = require('fs');
 
-async function readJson() {
-  const res = fs.readFileSync('data.json', 'utf-8');
-  console.log(res);
-  return res;
-}
-
-
 async function api() {
-  const res = await readJson();
+  // 同步读取
+  const res = fs.readFileSync('data.json', 'utf-8');
   const data = JSON.parse(res);
-  console.log(data);
   const add = {
-    num: data.num,
-    num1: data.num+1
+    num: data.num + 1,
   }
-  fs.open('data.json', 'wx', (err, fd) => {
-    if (err.code === 'EEXIST') {
-      console.log(err);
-    } else {
-    }
-  })
+  // 异步写入
+  const over = await fs.writeFileSync('data.json', JSON.stringify(add));
+  // undefined
+  console.log(over);
+  // ok
+  console.log('ok');
 }
 
 setTimeout(() => {
+  console.log(1);
   api();
+  console.log(2);
 }, 500)
 setTimeout(() => {
+  console.log(3);
   api();
+  console.log(4);
 },500)
+
+// for (let i = 0; i <100 ; i++) {
+//   api();
+// }
