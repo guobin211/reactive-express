@@ -1,6 +1,5 @@
 import { Request, Response, Router } from 'express';
 import { Users } from '../models/User';
-import { Document } from 'mongoose';
 
 /**
  *  user-router.ts
