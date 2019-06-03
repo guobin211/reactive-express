@@ -18,7 +18,7 @@ const Person = (function () {
 })();
 
 
-jack = new Person('jack');
+const jack = new Person('jack');
 
 console.log(jack.name)
 
