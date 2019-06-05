@@ -85,7 +85,7 @@ class Server {
       res.header(
           'Access-Control-Allow-Headers',
           'Origin, X-Requested-With, Content-Type, Token, Accept, Authorization,' +
-          ' Access-Control-Allow-Credentials'
+          'Access-Control-Allow-Credentials'
       );
       res.header('Access-Control-Allow-Credentials', 'true');
       next();
