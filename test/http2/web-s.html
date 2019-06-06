@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="renderer" content="webkit">
+  <title>web-socket</title>
+</head>
+<body>
+  <h1>web-socket</h1>
+  <script>
+    const ws = new WebSocket('ws://127.0.0.1:12011');
+    console.log(ws);
+
+    ws.onopen = function (Event) {
+      console.log('open')
+      console.log(Event);
+    }
+    // 接受服务端消息
+    ws.onmessage = function (MessageEvent) {
+      console.log(MessageEvent.data);
+      // 发送消息到服务端
+      ws.send('hi' + MessageEvent.data, {compress: true, binary: true, fin: true, mask: true}, () => {
+          console.log('send hi ok!')
+      })
+    }
+
+    ws.onerror = function () {
+      console.log('error')
+    }
+
+    ws.onclose = function () {
+      console.log('closed')
+    }
+
+  </script>
+</body>
+</html>
