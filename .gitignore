@@ -4,7 +4,11 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+file
 
+.idea
+.vscode
+.DS_Store
 package-lock.json
 # Runtime data
 pids
@@ -81,5 +85,7 @@ typings/
 .idea/modules.xml
 .idea/workspace.xml
 dist/
+dist/*
+dist/**/*
 
 .idea/

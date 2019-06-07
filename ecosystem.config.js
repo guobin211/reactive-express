@@ -1,6 +1,6 @@
 module.exports = {
     apps: [{
-        name: "admin",
+        name: "reactive-express",
         script: "dist/app.js",
         kill_timeout: 10000,
         env: {

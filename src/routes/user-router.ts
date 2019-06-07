@@ -60,23 +60,30 @@ export class UserRouter {
      */
     public create(req: Request, res: Response): void {
         const {firstName, lastName, username, email, password} = req.body;
+        Users.findOne({username: username}).then(data => {
+            if (data) {
+                res.status(503).json({msg: '用户已经存在'});
+            } else {
+                Users.countDocuments('', (err, count) => {
+                    const user = new Users({
+                        firstName,
+                        lastName,
+                        username,
+                        email,
+                        password: password + count
+                    });
+                    user
+                        .save()
+                        .then((data) => {
+                            res.status(200).json({data});
+                        })
+                        .catch((error) => {
+                            res.status(500).json({error});
+                        });
+                })
+            }
+        })
 
-        const user = new Users({
-            firstName,
-            lastName,
-            username,
-            email,
-            password
-        });
-
-        user
-            .save()
-            .then((data) => {
-                res.status(201).json({data});
-            })
-            .catch((error) => {
-                res.status(500).json({error});
-            });
     }
 
     /**
@@ -102,9 +109,9 @@ export class UserRouter {
      * @param res
      */
     public delete(req: Request, res: Response): void {
-        const {username} = req.params;
-
-        Users.findOneAndDelete({username})
+        const id = req.params.username;
+        console.log(id);
+        Users.findOneAndDelete({_id: id})
             .then(() => {
                 res.status(204).end();
             })

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="renderer" content="webkit">
+  <title>socket</title>
+</head>
+<body>
+<h1>socket html</h1>
+<canvas id="video" width="900" height="600"></canvas>
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+<script type="text/javascript">
+  var socket = io('http://127.0.0.1:9000');
+  var canvas = document.getElementById('video');
+  var context = canvas.getContext('2d');
+  var times = 0;
+  console.log(context);
+  socket.on('connect', function(){
+    console.log('connect')
+  });
+  socket.on('event', function(data){
+    console.log(data)
+  });
+  socket.on('video', function (data) {
+    // ArrayBuffer
+    times++;
+    const blob = new Blob([data], {type: 'image/png'})
+    const file = new FileReader();
+    file.readAsDataURL(blob);
+    file.onload = e => {
+      draw(e.target.result)
+    };
+    console.log(times);
+  });
+  socket.on('welcome', function (data) {
+    console.log(data)
+  })
+  socket.on('disconnect', function(){
+    console.log('close')
+  });
+
+  function draw(base) {
+    const image = new Image();
+    image.src = base;
+    image.onload = () => {
+      context.drawImage(image,0, 0, 900, 600);
+      image.onload = image.onerror = null;
+    }
+    image.onerror = () => {
+      image.onload = image.onerror = null;
+    };
+  }
+</script>
+</body>
+</html>
