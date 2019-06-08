@@ -11,3 +11,6 @@ console.log(URL);
 console.log(__dirname);
 
 console.log(__filename);
+
+// 查看调用堆栈信息
+console.trace();

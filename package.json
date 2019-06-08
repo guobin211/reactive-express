@@ -16,6 +16,7 @@
     "compression": "1.7.3",
     "cookie-parser": "1.4.3",
     "cors": "2.8.5",
+    "debug": "latest",
     "dotenv": "6.2.0",
     "express": "4.16.4",
     "file-type": "^10.6.0",
@@ -23,12 +24,12 @@
     "mongoose": "5.3.16",
     "morgan": "1.9.1",
     "mysql": "^2.16.0",
+    "pm2": "^3.5.1",
     "reflect-metadata": "^0.1.12",
     "shelljs": "latest",
     "socket.io": "^2.2.0",
     "typeorm": "^0.2.11",
-    "ws": "^7.0.0",
-    "debug": "latest"
+    "ws": "^7.0.0"
   },
   "devDependencies": {
     "@types/ws": "^6.0.1",
