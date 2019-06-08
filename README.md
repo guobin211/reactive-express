@@ -67,6 +67,10 @@ pm2 start               //  pm2 start
     ecosystem.config.js     pm2配置文件
     mongodb.sh              mongodb 测试
     nginx.conf              nginx   测试
+    
+    test/
+        /** 增加nodejs文件测试
+
 
 ### 运行地址
     
