@@ -4,6 +4,8 @@ async function getName() {
     return "my name is jack"
 }
 
+console.log(Object.keys(util));
+
 const callbackFunction = util.promisify(getName);
 
 callbackFunction((err, res) => {

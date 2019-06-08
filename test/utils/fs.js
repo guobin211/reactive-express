@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+console.log(Object.keys(fs));
+
 async function api() {
   // 同步读取
   const res = fs.readFileSync('data.json', 'utf-8');
