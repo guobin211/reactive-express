@@ -89,3 +89,4 @@ dist/*
 dist/**/*
 
 .idea/
+test/stream/index.html.gz
