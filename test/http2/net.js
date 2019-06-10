@@ -1,5 +1,10 @@
 const net = require('net');
-
+/**
+ * http -> udp -> tcp(传输层) -> ip(添加ip，网络层) -> packet(mac打包，数据链路层) -> byte(物理比特流)
+ * ctl: 序列位置
+ * ack: 应答
+ * @type {Server}
+ */
 const server = net.createServer(socket => {
     console.log("create server");
 });
