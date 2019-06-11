@@ -24,6 +24,6 @@ console.log(txt);
 fs.writeFileSync('demo.txt', Buffer.from('追加字符'),{
   encoding:'utf8',
   flag:'a'
-})
+});
 
 console.log(txt);

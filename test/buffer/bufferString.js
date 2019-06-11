@@ -27,7 +27,7 @@ fs.writeFile('./demo.txt', Buffer.from(str, 'ascii'), {flag: 'a'}, (err) => {
     const res = fs.readFileSync('./demo.txt', 'ascii');
     console.log(res);
   }
-})
+});
 
 fs.open('./demo.txt', 'w', (err, fd) => {
   if (err) {
@@ -44,4 +44,4 @@ fs.open('./demo.txt', 'w', (err, fd) => {
       })
     })
   }
-})
+});

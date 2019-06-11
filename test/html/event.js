@@ -18,4 +18,4 @@ console.log(sse);
 
 sse.onmessage = function (ev) {
   console.log(ev.data, ev)
-}
+};

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RXjs</title>
+</head>
+<body>
+<div>
+  <h1>Rxjs操作符</h1>
+
+  <form id="form">
+    <label for="input">用户名</label>
+    <input type="text" id="input" placeholder="输入" name="username">
+    <label for="pass">密码</label>
+    <input type="text" id="pass" placeholder="输入" name="pass">
+    <button type="button" onclick="submitForm()">提交</button>
+  </form>
+
+</div>
+<script src="https://cdn.bootcss.com/rxjs/6.5.2/rxjs.umd.js"></script>
+<script type="text/javascript">
+  'use strict';
+  const form = document.getElementById('form');
+  const rxjs = window.rxjs;
+  const arrayNumber = [1, 2, 3, 4, 5];
+  const arrayString = ['a', 'b', 'c', 'd', 'e'];
+  const numbers$ = rxjs.of(arrayNumber);
+  const string$ = rxjs.from(arrayString);
+
+  function submitForm() {
+    const username = form['username'].value;
+    const password = form['pass'].value;
+
+    console.log({username: username, password: password});
+  }
+
+  window.onload = function () {
+    console.log(rxjs);
+    numbers$.pipe().subscribe(n => {
+      console.log(n);
+    })
+  }
+</script>
+</body>
+</html>

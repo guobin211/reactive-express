@@ -34,7 +34,7 @@ let base64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 base64 += base64.toLowerCase();
 base64 += '0123456789';
 base64 += '+/';
-console.log(base64)
+console.log(base64);
 // 好 = JXU1OTdE
 
 
