@@ -17,7 +17,7 @@ server.listen({host: 'localhost', port: 8888, exclusive: true});
 
 
 function onClose(socket) {
-    console.log("on closed" + socket)
+    console.log("on closed" + socket);
 }
 
 function onConnection(socket) {
@@ -27,5 +27,5 @@ function onConnection(socket) {
 }
 
 function onError(err) {
-    console.log("on error" + err)
+    console.log("on error" + err);
 }

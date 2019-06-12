@@ -42,7 +42,7 @@ class Application {
   listen(...args) {
     const server = http.createServer(async (req, res) => {
       let ctx = this.createContext(req,res);
-      console.log('recived', ctx.request.req);
+      console.log('received', ctx.request.req);
       await this.callback(ctx);
       ctx.res.end(ctx.body);
       // this.callback(req, res);

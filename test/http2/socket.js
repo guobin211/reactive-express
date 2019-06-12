@@ -16,10 +16,10 @@ let tempFile, buff;
 
 io.on('connection', client => {
   client.on('event', data => {
-    console.log(data)
+    console.log(data);
   });
   client.on('disconnect', () => {
-    console.log('断开链接')
+    console.log('断开链接');
   });
   // 发送事件消息
   client.emit('welcome', {hello: 'io'});
@@ -31,14 +31,15 @@ io.on('connection', client => {
       sleep(100);
       client.emit('video', buff);
     }
-  }, 1000)
-})
+  }, 1000);
+});
 
 function sleep(delay) {
   const start = new Date().getTime();
+  // eslint-disable-next-line no-empty
   while (new Date().getTime() - start < delay) {}
 }
 
 server.listen(9000, () => {
-  console.log('http://127.0.0.1:9000')
+  console.log('http://127.0.0.1:9000');
 });

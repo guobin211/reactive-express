@@ -16,9 +16,9 @@
     console.log(ws);
 
     ws.onopen = function (Event) {
-      console.log('open')
+      console.log('open');
       console.log(Event);
-    }
+    };
     // 接受服务端消息
     ws.onmessage = function (MessageEvent) {
       console.log(MessageEvent.data);
@@ -26,11 +26,11 @@
       ws.send('hi' + MessageEvent.data, {compress: true, binary: true, fin: true, mask: true}, () => {
           console.log('send hi ok!')
       })
-    }
+    };
 
     ws.onerror = function () {
       console.log('error')
-    }
+    };
 
     ws.onclose = function () {
       console.log('closed')

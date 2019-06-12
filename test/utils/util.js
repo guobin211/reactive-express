@@ -1,7 +1,7 @@
 const util = require('util');
 
 async function getName() {
-    return "my name is jack"
+    return "my name is jack";
 }
 
 console.log(Object.keys(util));
@@ -28,7 +28,7 @@ function getDetail() {
     const age = getAge();
     console.log(age);
 
-    console.log("end!")
+    console.log("end!");
 }
 
 getDetail();

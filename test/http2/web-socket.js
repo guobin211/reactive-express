@@ -20,9 +20,12 @@ const wss = new WebSocket.Server({
     concurrencyLimit: 10, // Limits zlib concurrency for perf.
     threshold: 1024 // Size (in bytes) below which messages
   }
-})
+});
 
 let index = 0;
+setInterval(() => {
+  index++;
+}, 1000);
 wss.on('connection', (ws) => {
 
   // console.log(ws);
@@ -34,8 +37,8 @@ wss.on('connection', (ws) => {
   ws.send('hello');
 
   setInterval(() => {
-    ws.send(index++);
-  }, 2000)
-})
+    ws.send(index);
+  }, 2000);
+});
 
-console.log('ws://127.0.0.1:12011')
+console.log('ws://127.0.0.1:12011');

@@ -7,15 +7,15 @@ var sse = new EventSource("http://127.0.0.1:3000", {
 });
 
 if (sse.readyState === 0) {
-  console.log("sse 断线重连")
+  console.log("sse 断线重连");
 } else if (sse.readyState === 1) {
-  console.log("sse 已经连接上")
+  console.log("sse 已经连接上");
 } else if (sse.readyState === 2) {
-  console.log("sse 断线不重连")
+  console.log("sse 断线不重连");
 }
 
 console.log(sse);
 
 sse.onmessage = function (ev) {
-  console.log(ev.data, ev)
+  console.log(ev.data, ev);
 };

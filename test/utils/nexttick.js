@@ -1,5 +1,5 @@
 /**
- * nexttick 轮循 进程微任务
+ * next tick 轮循 进程微任务
  * @author guobin201314@gmail.com on 2019-06-08
  */
 
