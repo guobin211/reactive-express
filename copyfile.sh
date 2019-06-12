@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 删除dir
+# 递归删除dir
 rm -rf dist/
 # 创建dir
 mkdir dist

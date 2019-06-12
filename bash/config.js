@@ -1,5 +1,5 @@
 function app() {
-  console.log("app start...")
+  console.log("app start...");
 }
 
 app();

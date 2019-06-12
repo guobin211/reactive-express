@@ -2,7 +2,7 @@
  * event
  * Author GuoBin201314@gmail.com on 15:33
  */
-var sse = new EventSource("http://127.0.0.1:3000", {
+const sse = new EventSource("http://127.0.0.1:6666", {
   withCredentials: true
 });
 
