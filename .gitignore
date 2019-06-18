@@ -92,3 +92,4 @@ dist/**/*
 
 .idea/
 test/stream/index.html.gz
+test/html/UML.pdf
