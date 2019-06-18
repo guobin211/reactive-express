@@ -10,7 +10,7 @@ function main() {
     if (el.includes('--config')) {
       console.log(el.split("=")[1]);
     }
-  })
+  });
 }
 
 main();
