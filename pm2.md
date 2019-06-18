@@ -16,3 +16,4 @@ pm2 stop appname    // 停止app
 
 >  ecosystem.config.js
 
+
