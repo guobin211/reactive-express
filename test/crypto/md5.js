@@ -30,7 +30,8 @@ function encryption(string, selfKey) {
   if (!(string && selfKey)) {
     throw error('lack of encode string or key!');
   } else {
-    const cipher = crypto.createCipher('aes192', selfKey);
+    let cipher;
+    cipher = crypto.createCipher('aes192', selfKey);
     let enc = cipher.update(string, 'utf8', 'hex');
     enc += cipher.final('hex');
     return enc;

@@ -2,26 +2,26 @@ const http = require('http');
 
 let context = {
   get url() {
-    return this.request.url
+    return this.request.url;
   },
   get body() {
-    return this.response.body
+    return this.response.body;
   },
   set body(val) {
-    this.response.body = val
+    this.response.body = val;
   }
 };
 let request = {
   get url() {
-    return this.request.url
+    return this.request.url;
   }
 };
 let response = {
   get body() {
-    return this._body
+    return this._body;
   },
   set body(val) {
-    this._body = val
+    this._body = val;
   }
 };
 

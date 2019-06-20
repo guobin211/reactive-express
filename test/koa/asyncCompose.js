@@ -5,7 +5,6 @@
 
 const middlewares = [fun1, fun2, fun3];
 const finalFn = asyncCompose(middlewares);
-
 const res = finalFn();
 console.log('res:' + res);
 
@@ -17,16 +16,16 @@ console.log('res:' + res);
 function asyncCompose(midds) {
   return function () {
     return dispath(0);
+
     // 递归调用
     function dispath(i) {
       let fn = midds[i];
       if (!fn) {
         return Promise.resolve();
-      } else {
-        return Promise.resolve( fn(function next() {
-          return dispath(i + 1);
-        }));
       }
+      return Promise.resolve(fn(function next() {
+        return dispath(i + 1);
+      }));
     }
   };
 }
