@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>正则表达式</title>
+</head>
+<body>
+  <h2>正则表达式</h2>
+  <script type="application/javascript">
+    "use strict";
+    const reg1 = /\w+/;
+    const reg2 = new RegExp('ab+c');
+    const text = 'i\'m jack coming from USA';
+    const text2 = 'i\'m abc abd c a bdc abc coming from USA';
+    console.log(reg1.test(text));
+    console.log(reg2.test(text));
+    console.log(text2.match(reg2));
+    const res = text2.matchAll(reg2);
+    console.log(res);
+
+    const arr = Array.from(res, match => match[0]);
+    console.log(arr);
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>web-base64编码与解码</title>
+  <style>
+    .row-warp{
+      display: flex;
+      flex-direction: row;
+      vertical-align: center;
+    }
+    button{
+      display: block;
+      width: 140px;
+      height: 30px;
+      margin-right: 20px;
+      background: #1f69c0;
+      border-radius: 4px;
+      color: #fff;
+      text-align: center;
+      cursor: pointer;
+      border: 0px;
+      box-shadow: 0 0 0;
+    }
+    button:hover{
+      border: 0px;
+      background: #ff3c66;
+    }
+    button:focus{
+      border: 0px;
+      background: #19a974;
+    }
+  </style>
+</head>
+<body>
+  <h2>base64</h2>
+  <h3 id="result"></h3>
+  <div class="row-warp">
+    <button type="button" onclick="handleClick1()">uint6ToB64</button>
+    <button type="button" onclick="handleClick2()">ArrayBuffer</button>
+    <button type="button" onclick="handleClick3()">Int16Array</button>
+    <button type="button" onclick="handleClick4()">base64ToUnit6</button>
+  </div>
+  <script src="base64.js"></script>
+  <script type="application/javascript">
+    const h3 = document.getElementById('result');
+    const str = "admin 888";
+
+    h3.innerText = str;
+
+    const strUTF16CodeUnits = new Uint16Array(str.length);
+    // Uint16Array [0, 0......]
+    console.log(strUTF16CodeUnits);
+    // 获取string的unit编码
+    console.log(str.charCodeAt(0));
+    // 获取string
+    console.log(str.charAt(0));
+    Array.prototype.forEach.call(strUTF16CodeUnits, function (el, idx, arr) { arr[idx] = str.charCodeAt(idx); });
+    // Uint16Array [97, 100, 109......]
+    console.log(strUTF16CodeUnits);
+    const _uint8Array = new Uint8Array(strUTF16CodeUnits.buffer);
+    console.log(_uint8Array);
+    const base64Str = base64EncArr(new Uint8Array(strUTF16CodeUnits.buffer));
+    console.log('base64: ' + base64Str);
+
+
+    function handleClick1() {
+      const b64 = base64EncArr(strToUTF8Arr(str));
+      h3.innerText = 'base64: ' + b64;
+    }
+    function handleClick2() {
+      const char = str.charCodeAt(0);
+      // 字符串转16进制
+      const str16 = char.toString(16);
+      console.log('16进制: ' + str16);
+      const buff = new ArrayBuffer(Number(str16));
+      console.log(buff);
+    }
+    function handleClick3() {
+      const b64 = Int16Array.from(str);
+      console.log(b64)
+    }
+    function handleClick4() {
+      const s = new Set([1,2,3]);
+      // Uint8Array 数组类型表示一个8位byte无符号整型数组
+      console.log(Uint8Array.from(s));
+    }
+
+    function testUnicode() {
+      console.log('——————测试unicode和string——————');
+      // string 转 unicode
+      const unicode = base64EncodeUnicode(str);
+      console.log('unicode编码: ' + unicode);
+      // unicode 转 string
+      console.log(base64DecodeUnicode(unicode));
+    }
+
+    testUnicode();
+
+
+    function testUTF16() {
+      console.log("——————测试UTF16——————");
+
+      const res= btoatoUTF16(str);
+      console.log('base64: ' + res);
+
+      console.log(atobUTF16(res));
+    }
+
+    testUTF16();
+
+    // Int8Array 类型数组表示二进制补码8位有符号整数的数组
+    const int8 = new Int8Array(2);
+    int8[0] = 42;
+    console.log(int8[0]);
+    // 创建8byte的ArrayBuffer create an ArrayBuffer with a size in bytes
+    const buff = new ArrayBuffer(8);
+    console.log('byteLength: ' + buff.byteLength);
+    console.log(buff);
+    const z = new Int8Array(buff);
+    console.log(z);
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据类型</title>
+</head>
+<body>
+  <h2>数据类型TypedArray</h2>
+  <ul>
+    <li>Int8Array</li>
+    <li>Uint8Array</li>
+    <li>Int16Array</li>
+    <li>Uint16Array</li>
+    <li>Int32Array</li>
+    <li>Uint32Array</li>
+    <li>Float32Array</li>
+    <li>Float64Array</li>
+  </ul>
+
+  <script type="application/javascript">
+    "use strict";
+    const data = Object.create(null);
+    const mock = {
+      buff: new ArrayBuffer(10),
+      int8: new Int8Array(10),
+      uint8: new Uint8Array(10),
+      int16: new Int16Array(10),
+      uint16: new Uint16Array(10),
+      int32: new Int32Array(10),
+      uint32: new Uint32Array(10),
+      float32: new Float32Array(10),
+      float64: new Float64Array(10)
+    };
+    function initData() {
+      data.buff = new ArrayBuffer(10);
+      data.int8 = new Int8Array(10);
+      data.uint8 = new Uint8Array(10);
+      data.int16 = new Int16Array(10);
+      data.uint16=new Uint16Array(10);
+      data.int32= new Int32Array(10);
+      data.uint32= new Uint32Array(10);
+      data.float32= new Float32Array(10);
+      data.float64= new Float64Array(10);
+    }
+    initData();
+
+    window.onload = function () {
+      console.log(data);
+      console.log(mock);
+      const name = 'jack_jones';
+      const age = 19;
+      console.log(name.toString());
+      console.log(age.toString());
+      // 转换成2进制
+      const res2 = age.toString(2);
+      console.log(res2);
+      // 解析2进制
+      console.log(parseInt(res2, 2));
+      // 转换成8进制
+      console.log(age.toString(8));
+      // 转换成16进制
+      console.log(age.toString(16));
+
+      const buff = Int8Array.from(name);
+      stringToBuffer(name, buff);
+      console.log(buff);
+      const str = parseBuffer(buff);
+      console.log(str);
+
+      stringToBuffer(name, data.uint8);
+      console.log(data.uint8);
+      const str2 = parseBuffer(data.uint8);
+      console.log(str2);
+
+      data.buff = stringToBuffer(name, data.buff);
+      console.log(data.buff);
+
+      const bigNumber = 2019.6;
+      stringToBuffer(bigNumber.toString(), data.uint16);
+      console.log(data.uint16);
+      const res = parseBuffer(data.uint16);
+      console.log(parseFloat(res));
+
+      /**
+       * string 转 buffer
+       * @param str
+       * @param buff
+       */
+      function stringToBuffer(str, buff) {
+        if (!buff || buff.__proto__.constructor.toString().includes('ArrayBuffer') ) {
+          // ArrayBuffer长度是2倍
+          buff = new ArrayBuffer(str.length * 2);
+          const buffView = new Uint16Array(buff);
+          for (let i = 0; i < str.length; i++) {
+            buffView[i] = str.charCodeAt(i);
+          }
+          return buff;
+        } else {
+          // Int8Array || Uint8Array || Int16Array......
+          for (let i = 0; i < buff.length; i++) {
+            // charCodeAt方法返回0到65535之间的整数，表示给定索引处的UTF-16代码单元
+            buff[i] = str.charCodeAt(i);
+            // codePointAt() 方法返回 一个 Unicode 编码点值的非负整数
+            // buff[i] = str.codePointAt(i);
+          }
+        }
+      }
+
+      /**
+       * buffer 转 string
+       * @param buff
+       * @returns {string|string}
+       */
+      function parseBuffer(buff) {
+        let res = '';
+        for (let i = 0; i < buff.length; i++) {
+          // fromCharCode静态方法返回由指定的UTF-16代码单元序列创建的字符串
+          res += String.fromCharCode(buff[i]);
+          // fromCodePoint静态方法返回使用指定的代码点序列创建的字符串
+          // res += String.fromCodePoint(buff[i]);
+        }
+        return res;
+      }
+
+      function testDataView() {
+        // 创建ArrayBuffer; byteLength = 10;
+        const buff = new ArrayBuffer(10);
+        console.log(buff);
+        // 默认byteLength = 10; byteOffset = 0;
+        const view1 = new DataView(buff);
+        // 修改byteLength = 4; byteOffset = 0;
+        const view2 = new DataView(buff, 0, 4);
+        view1.setInt8(0, 42);
+        console.log(view2.getInt8(0));
+        console.log(view1);
+        console.log(view2);
+      }
+      testDataView();
+    }
+
+  </script>
+</body>
+</html>
