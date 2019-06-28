@@ -10,6 +10,7 @@ debug('ts-express:server');
 const server = http.createServer(Server);
 server.listen(port);
 console.log(`Server listening on port http://localhost:${port}`);
+
 server.on('error', onError);
 server.on('listening', onListening);
 
