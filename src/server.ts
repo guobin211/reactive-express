@@ -40,7 +40,7 @@ class Server {
    * express app mid config
    */
   private initConfig(): void {
-    const MONGO_URL = 'mongodb://localhost/node_mongo';
+    const MONGO_URL = 'mongodb://localhost/express_mongo';
     mongoose.connect(MONGO_URL || process.env.MONGODB_URL, {useNewUrlParser: true})
         .then(mongo => {
           logger('mongodb 连接成功');
@@ -51,7 +51,7 @@ class Server {
       port: 3306,
       username: 'root',
       password: 'admin888',
-      database: 'node_mysql8',
+      database: 'express_mysql',
       entities: [
         __dirname + '/entity/*.js'
       ],
