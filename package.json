@@ -31,7 +31,7 @@
     "reflect-metadata": "^0.1.12",
     "shelljs": "latest",
     "socket.io": "^2.2.0",
-    "typeorm": "^0.2.11",
+    "typeorm": "^0.2.25",
     "ws": "^7.0.0"
   },
   "devDependencies": {
