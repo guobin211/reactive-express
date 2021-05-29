@@ -32,7 +32,7 @@
     "shelljs": "latest",
     "socket.io": "^2.2.0",
     "typeorm": "^0.2.11",
-    "ws": "^7.0.0"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@types/async": "^3.0.0",
