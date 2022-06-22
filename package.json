@@ -11,7 +11,7 @@
     "npm-args": "node test/object/npm.js --config=2333"
   },
   "dependencies": {
-    "async": "^3.0.1",
+    "async": "^3.2.2",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.3",
     "compression": "1.7.3",
